@@ -91,6 +91,13 @@ public class NimGame {
                                 System.out.println("How many marbles would you like to take?");
                                 playerMarblesTaking = in.nextInt();
                             } while (playerMarblesTaking > maxMarblesToTake && playerMarblesTaking != 0);
+
+                            if (playerMarblesTaking == 0 || playerMarblesTaking > maxMarblesToTake) { // This makes it so the player cannot take 0 marbles or more than their allotted amount to take.
+                                while (playerMarblesTaking == 0 || playerMarblesTaking > maxMarblesToTake) {
+                                    System.out.println("How many marbles would you like to take?");
+                                    playerMarblesTaking = in.nextInt();
+                                }
+                            }
                         } else {
                             do {
                                 System.out.println("How many marbles would you like to take?");
@@ -135,10 +142,19 @@ public class NimGame {
                             } else {
                                 System.out.println("You may take one marble.");
                             }
-                            do {
-                                System.out.println("How many marbles would you like to take?");
-                                playerMarblesTaking = in.nextInt();
-                            } while(playerMarblesTaking > maxMarblesToTake && playerMarblesTaking != 0);
+
+                            // Gets players response as to many many marbles they want to take.
+                            System.out.println("How many marbles would you like to take?");
+                            playerMarblesTaking = in.nextInt();
+                            if (maxMarblesToTake == 0) { // If the computer does numberOfMarbles/2 and max marbles to take equals 0 then make it so it is equal to one.
+                                maxMarblesToTake = 1;
+                            }
+                            if (playerMarblesTaking == 0 || playerMarblesTaking > maxMarblesToTake) { // This makes it so the player cannot take 0 marbles or more than their allotted amount to take.
+                                while (playerMarblesTaking == 0 || playerMarblesTaking > maxMarblesToTake) {
+                                    System.out.println("How many marbles would you like to take?");
+                                    playerMarblesTaking = in.nextInt();
+                                }
+                            }
                             playerMarblesTaken += playerMarblesTaking; // Add the amount of marbles in the Players pile by the amount he is taking this turn.
                             numberOfMarbles -= playerMarblesTaking; // Negate the total amount of marbles by the amount of marbles the player is taking.
                             maxMarblesToTake = numberOfMarbles / 2; // Change the max amount of marbles a user may take next turn.
