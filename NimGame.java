@@ -26,22 +26,22 @@ public class NimGame {
         System.out.println("Determining who will go first...");
         goingFirst = rng.nextInt(2); // 0 is Dr. Nim, 1 is Person.
         switch (goingFirst) {
-            case 0:
+            case 0: // If 0 is generated, Dr. Nim will go first.
                 System.out.println("Dr. Nim will be going first.");
                 break;
-            case 1:
+            case 1: // If 1 is generated, the player will go first.
                 System.out.println("You will be going first.");
                 break;
         }
 
         //Determine the starting amount of marbles
         System.out.println("Generating number of marbles...");
-        numberOfMarbles = rng.nextInt(91) + 10; //Generate a number from (10, 100)
+        numberOfMarbles = rng.nextInt(91) + 10; // Generates a number from (10, 100), this will be the amount of marbles used in the game.
         System.out.printf("You are playing with %d marbles.\n", numberOfMarbles); // Output how many marbles are being used this game.
         maxMarblesToTake = numberOfMarbles / 2; // Update the amount of marbles a player can take on their turn.
 
         //Determine expert or novice.
-        do{
+        do{ // Have the user choose Novice, Expert, or Random
             System.out.print("Would you like Dr. Nim to play as: \n" +
                     "Novice: Type 0\n" +
                     "Expert: Type 1\n" +
@@ -60,10 +60,10 @@ public class NimGame {
             case 2: // Random pick between novice or expert.
                 noviceOrExpert = rng.nextInt(2);
                 switch (noviceOrExpert) {
-                    case 0:
+                    case 0: // If 0 is generated, Novice mode is selected.
                         System.out.println("Dr. Nim will be going easy on you.");
                         break;
-                    case 1:
+                    case 1: // If 1 is generated, Expert mode is selected.
                         System.out.println("Dr. Nim will be going hard on you.");
                         break;
                 }
@@ -77,17 +77,17 @@ public class NimGame {
                 switch(goingFirst) {
                     case 0:
                         System.out.println("It is Dr. Nim's turn.");
-                        nimMarblesTaking = rng.nextInt(numberOfMarbles / 2) + 1;
-                        numberOfMarbles -= nimMarblesTaking;
-                        nimMarblesTaken += nimMarblesTaking;
-                        maxMarblesToTake = numberOfMarbles / 2;
+                        nimMarblesTaking = rng.nextInt(numberOfMarbles / 2) + 1; // Set the amount of marbles that Dr. Nim is taken to a random number between 1 and the half of the current pile of marbles in the game.
+                        numberOfMarbles -= nimMarblesTaking; // Decrease the total pile of marbles by the amount Dr. Nim is taking.
+                        nimMarblesTaken += nimMarblesTaking; // Increase the total amount of marbles that Dr. Nim has by the amount he is currently taking.
+                        maxMarblesToTake = numberOfMarbles / 2; // Set the new amount of marbles a user may take.
                         System.out.printf("Dr. Nim took %d marbles from the pile. Dr Nim now has %d marbles total and there are %d marbles left in the pile.\n", nimMarblesTaking, nimMarblesTaken, numberOfMarbles);
                         break;
                     case 1:
                         System.out.println("It is your turn.");
                         System.out.printf("You may take from 1 to %d marbles.\n", maxMarblesToTake);
-                        if (maxMarblesToTake > 1) {
-                            do {
+                        if (maxMarblesToTake > 1) { // If the user can take more than one marble, do this.
+                            do { // Make the user input a value that is not equal to 0 and that is not greater than the max amount of marbles they may take from the pile.
                                 System.out.println("How many marbles would you like to take?");
                                 playerMarblesTaking = in.nextInt();
                             } while (playerMarblesTaking > maxMarblesToTake && playerMarblesTaking != 0);
@@ -99,14 +99,14 @@ public class NimGame {
                                 }
                             }
                         } else {
-                            do {
+                            do { // Do this if they user may only take one marble, the user must input one as their answer.
                                 System.out.println("How many marbles would you like to take?");
                                 playerMarblesTaking = in.nextInt();
                             } while (playerMarblesTaking != 1);
                         }
-                        playerMarblesTaken += playerMarblesTaking;
-                        numberOfMarbles -= playerMarblesTaking;
-                        maxMarblesToTake = numberOfMarbles / 2;
+                        playerMarblesTaken += playerMarblesTaking; // Update the amount of marbles a user has taken by the amount they are taking this turn.
+                        numberOfMarbles -= playerMarblesTaking; // Update the total amount of marbles by decreasing the total pool by how much marbles the player is taking this turn.
+                        maxMarblesToTake = numberOfMarbles / 2; // Update the max amount of marbles a user may take on their turn.
                         System.out.printf("You are taking %d marbles from the pile. You know have %d marbles total and there are %d marbles left in the pile.\n", playerMarblesTaking, playerMarblesTaken, numberOfMarbles);
                         break;
                 }
@@ -127,26 +127,26 @@ public class NimGame {
                             if (numberOfMarbles > 1) { // If the amount of marbles is one than Nim may only take one marble.
                                 nimMarblesTaking = rng.nextInt(numberOfMarbles / 2) + 1; // Nim may take from one to half of the pile.
                             } else {
-                                nimMarblesTaking = 1;
+                                nimMarblesTaking = 1; // Take one marble Dr. Nim, no cheating.
                             }
                             numberOfMarbles -= nimMarblesTaking; // Negate the total amount of marbles by the amount of marbles Nim is taking.
                             nimMarblesTaken += nimMarblesTaking; // Add the amount of marbles in Nim's pile by the amount he is taking this turn.
                             maxMarblesToTake = numberOfMarbles / 2; // Change the max amount of marbles a user may take next turn.
                             System.out.printf("Dr. Nim took %d marbles from the pile. Dr Nim now has %d marbles total and there are %d marbles left in the pile.\n", nimMarblesTaking, nimMarblesTaken, numberOfMarbles);
-                            turn = 1;
+                            turn = 1; // Switch turns.
                             break;
                         case 1: // Process for the players turn.
                             System.out.println("It is your turn.");
                             if (maxMarblesToTake > 1) { // Changes response based on if there is only one marble left to take.
                                 System.out.printf("You may take from 1 to %d marbles.\n", maxMarblesToTake); // State how many marbles a user may take.
                             } else {
-                                System.out.println("You may take one marble.");
+                                System.out.println("You may take one marble."); // Outputs if the player can only  take one marble from the pile.
                             }
 
                             // Gets players response as to many many marbles they want to take.
                             System.out.println("How many marbles would you like to take?");
                             playerMarblesTaking = in.nextInt();
-                            if (maxMarblesToTake == 0) { // If the computer does numberOfMarbles/2 and max marbles to take equals 0 then make it so it is equal to one.
+                            if (maxMarblesToTake == 0) { // If the computer does numberOfMarbles/2 and maxMarblesToTake equals 0 then make it so maxMarblesToTake is equal to one. This is so that the user can always at-least take one marble.
                                 maxMarblesToTake = 1;
                             }
                             if (playerMarblesTaking == 0 || playerMarblesTaking > maxMarblesToTake) { // This makes it so the player cannot take 0 marbles or more than their allotted amount to take.
