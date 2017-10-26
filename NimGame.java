@@ -1,3 +1,13 @@
+/*
+QName:          The Game of Nim
+@Description:   There will be a generated amount of marbles and you are tasked with taking away marbles until one player takes
+                away the last one. The person who takes the last marbles loses! You may only take up to half the amount of
+                the total marbles left per turn.
+                Ex: If there are 40 marbles left you can take at most 20.
+@Author:        Tyler Darrow
+@Date:          10/26/2017
+@Version:       0.9
+ */
 
 import java.util.*;
 public class NimGame {
@@ -92,6 +102,7 @@ public class NimGame {
                             break;
                         case 1:
                             System.out.println("It is your turn.");
+                            System.out.printf("There are %d total marbles in the pool.\n", numberOfMarbles);
                             System.out.printf("You may take from 1 to %d marbles.\n", maxMarblesToTake);
                             if (maxMarblesToTake > 1) { // If the user can take more than one marble, do this.
                                 do { // Make the user input a value that is not equal to 0 and that is not greater than the max amount of marbles they may take from the pile.
@@ -148,6 +159,7 @@ public class NimGame {
                                 break;
                             case 1: // Process for the players turn.
                                 System.out.println("It is your turn.");
+                                System.out.printf("There are %d total marbles in the pool.\n", numberOfMarbles);
                                 if (maxMarblesToTake > 1) { // Changes response based on if there is only one marble left to take.
                                     System.out.printf("You may take from 1 to %d marbles.\n", maxMarblesToTake); // State how many marbles a user may take.
                                 } else {
@@ -229,6 +241,7 @@ public class NimGame {
                             break;
                         case 1:
                             System.out.println("It is your turn.");
+                            System.out.printf("There are %d total marbles in the pool.\n", numberOfMarbles);
                             System.out.printf("You may take from 1 to %d marbles.\n", maxMarblesToTake);
                             if (maxMarblesToTake > 1) { // If the user can take more than one marble, do this.
                                 do { // Make the user input a value that is not equal to 0 and that is not greater than the max amount of marbles they may take from the pile.
@@ -317,6 +330,7 @@ public class NimGame {
                                 break;
                             case 1: // Process for the players turn.
                                 System.out.println("It is your turn.");
+                                System.out.printf("There are %d total marbles in the pool.\n", numberOfMarbles);
                                 if (maxMarblesToTake > 1) { // Changes response based on if there is only one marble left to take.
                                     System.out.printf("You may take from 1 to %d marbles.\n", maxMarblesToTake); // State how many marbles a user may take.
                                 } else {
