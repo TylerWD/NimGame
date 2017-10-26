@@ -35,6 +35,8 @@ public class NimGame {
                 case 1: // If 1 is generated, the player will go first.
                     System.out.println("You will be going first.");
                     break;
+                default:
+                    return;
             }
 
             //Determine the starting amount of marbles
@@ -71,6 +73,8 @@ public class NimGame {
                             break;
                     }
                     break;
+                default:
+                    return;
             }
 
             //Game Play
@@ -112,6 +116,8 @@ public class NimGame {
                             maxMarblesToTake = numberOfMarbles / 2; // Update the max amount of marbles a user may take on their turn.
                             System.out.printf("You are taking %d marbles from the pile. You know have %d marbles total and there are %d marbles left in the pile.\n", playerMarblesTaking, playerMarblesTaken, numberOfMarbles);
                             break;
+                        default:
+                            return;
                     }
 
                     switch (goingFirst) { // Switch whos turn it will be after the first turn.
@@ -121,6 +127,8 @@ public class NimGame {
                         case 1: // If it was the player's turn, make it Dr. Nim's turn.
                             turn = 0;
                             break;
+                        default:
+                            return;
                     }
 
                     do { // Play the game while there are more than 0 marbles in the game.
@@ -164,6 +172,8 @@ public class NimGame {
                                 System.out.printf("You are taking %d marbles from the pile. You know have %d marbles total and there are %d marbles left in the pile.\n", playerMarblesTaking, playerMarblesTaken, numberOfMarbles);
                                 turn = 0;
                                 break;
+                            default:
+                                return;
                         }
                     } while (numberOfMarbles > 0);
 
@@ -174,6 +184,7 @@ public class NimGame {
                         case 1: // If the new turn after the game has ended is the players then Dr. Nim has lost.
                             System.out.println("You have won!");
                             break;
+                        default: return;
                     }
 
                     break;
@@ -242,6 +253,8 @@ public class NimGame {
                             maxMarblesToTake = numberOfMarbles / 2; // Update the max amount of marbles a user may take on their turn.
                             System.out.printf("You are taking %d marbles from the pile. You know have %d marbles total and there are %d marbles left in the pile.\n", playerMarblesTaking, playerMarblesTaken, numberOfMarbles);
                             break;
+                        default:
+                            return;
                     }
 
                     switch (goingFirst) { // Switch whos turn it will be after the first turn.
@@ -251,6 +264,8 @@ public class NimGame {
                         case 1: // If it was the player's turn, make it Dr. Nim's turn.
                             turn = 0;
                             break;
+                        default:
+                            return;
                     }
 
                     do { // Play the game while there are more than 0 marbles in the game.
@@ -330,6 +345,8 @@ public class NimGame {
                                 System.out.printf("You are taking %d marbles from the pile. You know have %d marbles total and there are %d marbles left in the pile.\n", playerMarblesTaking, playerMarblesTaken, numberOfMarbles);
                                 turn = 0;
                                 break;
+                            default:
+                                return;
                         }
                     } while (numberOfMarbles > 0);
 
@@ -340,6 +357,8 @@ public class NimGame {
                         case 1: // If the new turn after the game has ended is the players then Dr. Nim has lost.
                             System.out.println("You have won!");
                             break;
+                        default:
+                            return;
                     }
                     break;
             }
