@@ -71,10 +71,10 @@ public class NimGame {
                         case 1: // If 1 is generated, Expert mode is selected.
                             System.out.println("Dr. Nim will be going hard on you.");
                             break;
+                        default:
+                            return;
                     }
                     break;
-                default:
-                    return;
             }
 
             //Game Play
